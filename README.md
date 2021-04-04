@@ -582,6 +582,7 @@ Set up some methods that will run when its relative event is fired.
 If readonly is passed to the tag-input, it won't be possible to select, add and remove items.~~ [REMOVED]
 
 ```html
+<!--suppress ALL -->
 <tag-input [ngModel]="['Javascript', 'Typescript']" [readonly]="true"></tag-input>
 ```
 
