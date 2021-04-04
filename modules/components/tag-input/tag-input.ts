@@ -563,7 +563,7 @@ export class TagInputComponent extends TagInputAccessor implements OnInit, After
             case constants.ACTIONS_KEYS.DELETE:
                 if (this.selectedTag && this.removable) {
                     const index = this.items.indexOf(this.selectedTag);
-                    this.onRemoveRequested(this.selectedTag, index);
+                    void this.onRemoveRequested(this.selectedTag, index);
                 }
                 break;
 
@@ -1028,9 +1028,6 @@ export class TagInputComponent extends TagInputAccessor implements OnInit, After
         listen.call(this, constants.KEYDOWN, listener);
     }
 
-    /**
-     * @name setUpKeydownListeners
-     */
     private setUpInputKeydownListeners(): void {
         this.inputForm.onKeydown.subscribe(event => {
             if (event.key === 'Backspace' && this.formValue.trim() === '') {
@@ -1047,7 +1044,7 @@ export class TagInputComponent extends TagInputAccessor implements OnInit, After
 
         // attach listener to input
         this.renderer.listen(input, 'paste', (event) => {
-            this.onPasteCallback(event);
+            void this.onPasteCallback(event);
 
             event.preventDefault();
             return true;

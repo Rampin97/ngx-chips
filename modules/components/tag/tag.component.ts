@@ -12,8 +12,8 @@ import {
   ViewChild
 } from '@angular/core';
 
-import {TagModel} from '../../core/accessor';
-import {TagRipple} from '../tag/tag-ripple.component';
+import {TagModel} from '../../core';
+import {TagRipple} from './tag-ripple.component';
 import {EventLike} from '../../core/helpers/event-like';
 
 // mocking navigator
@@ -316,7 +316,7 @@ export class TagComponent {
     }
 
     /**
-     * @name
+     * @name activateEditMode
      */
     private activateEditMode(): void {
         const classList = this.element.nativeElement.classList;
