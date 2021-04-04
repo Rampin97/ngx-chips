@@ -1,5 +1,5 @@
 {
-  "name": "custom-ngx-chips",
+  "name": "ngx-chips",
   "version": "2.2.2",
   "description": "Fork of ngx-chips - Tag Input component for Angular",
   "scripts": {
