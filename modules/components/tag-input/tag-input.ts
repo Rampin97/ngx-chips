@@ -29,18 +29,18 @@ import { Observable } from 'rxjs';
 import { debounceTime, filter, map, first } from 'rxjs/operators';
 
 // ng2-tag-input
-import { TagInputAccessor, TagModel } from '../../core/accessor';
-import { listen } from '../../core/helpers/listen';
+import { TagInputAccessor, TagModel } from '../../core';
+import { listen } from '../../core';
 import * as constants from '../../core/constants';
 
-import { DragProvider, DraggedTag } from '../../core/providers/drag-provider';
+import { DragProvider, DraggedTag } from '../../core';
 
-import { TagInputForm } from '../tag-input-form/tag-input-form.component';
-import { TagComponent } from '../tag/tag.component';
+import { TagInputForm } from '../tag-input-form';
+import { TagComponent } from '../tag';
 
 import { animations } from './animations';
 import { defaults } from '../../defaults';
-import { TagInputDropdown } from '../dropdown/tag-input-dropdown.component';
+import { TagInputDropdown } from '../dropdown';
 
 // angular universal hacks
 /* tslint:disable-next-line */

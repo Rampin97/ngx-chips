@@ -94,7 +94,7 @@ export class Home {
         return of(item);
     }
 
-    private startsWithAt(control: FormControl) {
+    private static startsWithAt(control: FormControl) {
         if (control.value.charAt(0) !== '@') {
             return {
                 'startsWithAt@': true
@@ -104,7 +104,7 @@ export class Home {
         return null;
     }
 
-    private endsWith$(control: FormControl) {
+    private static endsWith$(control: FormControl) {
         if (control.value.charAt(control.value.length - 1) !== '$') {
             return {
                 'endsWith$': true
@@ -131,7 +131,7 @@ export class Home {
         isNan: 'Please only add numbers'
     };
 
-    public validators = [this.startsWithAt, this.endsWith$];
+    public validators = [Home.startsWithAt, Home.endsWith$];
 
     public asyncValidators = [this.validateAsync];
 

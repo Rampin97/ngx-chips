@@ -1,20 +1,20 @@
 import {
-    Component,
-    Input,
-    Output,
-    EventEmitter,
-    TemplateRef,
-    ElementRef,
-    HostListener,
-    HostBinding,
-    ViewChild,
-    ChangeDetectorRef,
-    Renderer2
+  ChangeDetectorRef,
+  Component,
+  ElementRef,
+  EventEmitter,
+  HostBinding,
+  HostListener,
+  Input,
+  Output,
+  Renderer2,
+  TemplateRef,
+  ViewChild
 } from '@angular/core';
 
-import { TagModel } from '../../core/accessor';
-import { TagRipple } from '../tag/tag-ripple.component';
-import { EventLike } from '../../core/helpers/event-like';
+import {TagModel} from '../../core/accessor';
+import {TagRipple} from '../tag/tag-ripple.component';
+import {EventLike} from '../../core/helpers/event-like';
 
 // mocking navigator
 const navigator = typeof window !== 'undefined' ? window.navigator : {
@@ -312,9 +312,7 @@ export class TagComponent {
      */
     private setContentEditableText(model: TagModel) {
         const input = this.getContentEditable();
-        const value = this.getDisplayValue(model);
-
-        input.innerText = value;
+        input.innerText = this.getDisplayValue(model);
     }
 
     /**

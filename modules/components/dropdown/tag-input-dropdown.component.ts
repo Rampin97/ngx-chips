@@ -12,13 +12,13 @@ import {
 } from '@angular/core';
 
 // rx
-import { Observable } from 'rxjs';
-import { filter, first, debounceTime, distinctUntilChanged } from 'rxjs/operators';
+import {from, Observable} from 'rxjs';
+import {filter, first, debounceTime, distinctUntilChanged, switchMap} from 'rxjs/operators';
 
-import { Ng2Dropdown, Ng2MenuItem } from 'ng2-material-dropdown';
+import { Ng2Dropdown, Ng2MenuItem } from '@vpetrusevici/ng2-material-dropdown';
 import { defaults } from '../../defaults';
-import { TagModel } from '../../core/accessor';
-import { TagInputComponent } from '../tag-input/tag-input';
+import { TagModel } from '../../core';
+import { TagInputComponent } from '../tag-input';
 
 @Component({
   selector: 'tag-input-dropdown',
@@ -31,7 +31,6 @@ export class TagInputDropdown implements AfterViewInit {
   @ViewChild(Ng2Dropdown) public dropdown: Ng2Dropdown;
 
   /**
-   * @name menuTemplate
    * @desc reference to the template if provided by the user
    */
   @ContentChildren(TemplateRef) public templates: QueryList<TemplateRef<any>>;
@@ -155,13 +154,12 @@ export class TagInputDropdown implements AfterViewInit {
 
   constructor(private readonly injector: Injector) {}
 
-  /**
-   * @name ngAfterviewInit
-   */
   ngAfterViewInit(): void {
-    this.onItemClicked().subscribe((item: Ng2MenuItem) => {
-      this.requestAdding(item);
-    });
+    this.onItemClicked()
+      .pipe(
+        switchMap(item => from(this.requestAdding(item)))
+      )
+      .subscribe();
 
     // reset itemsMatching array when the dropdown is hidden
     this.onHide().subscribe(this.resetItems);
@@ -211,7 +209,7 @@ export class TagInputDropdown implements AfterViewInit {
   /**
    * @name onItemClicked
    */
-  public onItemClicked(): EventEmitter<string> {
+  public onItemClicked(): EventEmitter<Ng2MenuItem> {
     return this.dropdown.onItemClicked;
   }
 
@@ -268,7 +266,7 @@ export class TagInputDropdown implements AfterViewInit {
     } else if (shouldHide) {
       this.hide();
     }
-  };
+  }
 
   /**
    * @name hide
@@ -320,7 +318,7 @@ export class TagInputDropdown implements AfterViewInit {
   private requestAdding = async (item: Ng2MenuItem) => {
     const tag = this.createTagModel(item);
     await this.tagInput.onAddingRequested(true, tag).catch(() => {});
-  };
+  }
 
   /**
    * @name createTagModel
@@ -377,7 +375,7 @@ export class TagInputDropdown implements AfterViewInit {
    */
   private resetItems = (): void => {
     this.items = [];
-  };
+  }
 
   /**
    * @name populateItems
@@ -421,7 +419,7 @@ export class TagInputDropdown implements AfterViewInit {
     this.autocompleteObservable(text)
       .pipe(first())
       .subscribe(subscribeFn, () => this.setLoadingState(false));
-  };
+  }
 
   /**
    * @name setLoadingState

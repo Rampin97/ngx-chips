@@ -1,4 +1,4 @@
-import { TagInputComponent } from '../../components/tag-input/tag-input';
+import { TagInputComponent } from '../../components';
 import { TagModel } from '../accessor';
 
 import { Injectable } from '@angular/core';
@@ -9,7 +9,7 @@ export declare interface DraggedTag {
     zone: string;
 }
 
-import { DRAG_AND_DROP_KEY } from '../../core/constants';
+import { DRAG_AND_DROP_KEY } from '../constants';
 
 export declare interface State {
     dragging: boolean;

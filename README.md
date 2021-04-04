@@ -31,7 +31,7 @@ import { FormsModule, ReactiveFormsModule } from '@angular/forms';
        TagInputModule, 
        BrowserAnimationsModule,
        FormsModule,
-       ReactiveFormsModule
+       ReactiveFormsModule,
        ...OtherModules 
    ] // along with your other modules
 })

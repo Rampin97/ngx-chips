@@ -1,7 +1,7 @@
 import { ControlValueAccessor } from '@angular/forms';
 import { Input, Directive } from '@angular/core';
-import { OptionsProvider } from './providers/options-provider';
-import { TagInputDropdown } from '../components/dropdown/tag-input-dropdown.component';
+import { OptionsProvider } from './providers';
+import { TagInputDropdown } from '../components';
 
 export class TagModelClass {
     [key: string]: any;

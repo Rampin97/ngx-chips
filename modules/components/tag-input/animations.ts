@@ -4,8 +4,7 @@ import {
     style,
     transition,
     keyframes,
-    state,
-    AnimationTriggerMetadata
+    state
 } from '@angular/animations';
 
 /**
